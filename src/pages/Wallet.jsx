@@ -1,4 +1,5 @@
 import React from 'react';
+// import { connect } from 'react-redux';
 
 class Wallet extends React.Component {
   render() {
@@ -7,3 +8,4 @@ class Wallet extends React.Component {
 }
 
 export default Wallet;
+// export default connect()(Wallet);
