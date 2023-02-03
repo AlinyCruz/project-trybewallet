@@ -19,10 +19,10 @@ export const actionCurrencies = (currencies) => ({
 });
 
 export function fetchMoedas() {
-  // const { dispatch } = this.props;
   return (dispatch) => {
     fetch('https://economia.awesomeapi.com.br/json/all')
       .then((response) => response.json())
       .then((data) => dispatch(actionCurrencies(data)));
   };
 }
+console.log(fetchMoedas);

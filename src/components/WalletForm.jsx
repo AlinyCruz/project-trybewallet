@@ -60,6 +60,8 @@ class WalletForm extends Component {
             data-testid="description-input"
           />
         </label>
+
+        <button>Adicionar despesa</button>
       </div>
     );
   }

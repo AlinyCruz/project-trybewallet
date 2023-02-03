@@ -3,7 +3,7 @@ import { VALOR, CURRENCIES } from '../actions';
 const INITIAL_STATE = {
   valor: 0,
   currencies: [],
-  // expenses: [],
+  expenses: [],
   // editor: false,
   // idToEdit: 0,
 };
