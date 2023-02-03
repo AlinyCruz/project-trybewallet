@@ -52,7 +52,6 @@ class Login extends React.Component {
 
   render() {
     const { botaoDesabilitado, email, senha } = this.state;
-    console.log(email);
     return (
       <div>
         <input
@@ -92,9 +91,4 @@ Login.propTypes = {
   }),
 }.isRequired;
 
-// const mapStateToProps = (state) => ({
-//   ...state.actionCreator,
-// });
-
-// export default Login;
 export default connect()(Login);

@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 export const user = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case CAPTURA_EMAIL:
-    console.log(action.email);
     return {
       ...state,
       email: action.email,
