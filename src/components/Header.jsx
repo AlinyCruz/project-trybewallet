@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { actionEmail } from '../redux/actions';
 // import { actionValor } from '../redux/actions';
@@ -22,6 +22,11 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  email: PropTypes.string,
+  valor: PropTypes.number,
+}.isRequired;
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
