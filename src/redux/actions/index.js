@@ -2,6 +2,7 @@
 export const CAPTURA_EMAIL = 'CAPTURA_EMAIL';
 export const VALOR = 'VALOR';
 export const CURRENCIES = 'CURRENCIES';
+export const ADD_CURRENCIES = 'ADD_CURRENCIES';
 
 export const actionEmail = (email) => ({
   type: CAPTURA_EMAIL, // type é o nome da chave e CAPTURA_EMAIL é o valor que aparece no redux
@@ -18,6 +19,11 @@ export const actionCurrencies = (currencies) => ({
   currencies,
 });
 
+export const actionAddCurrencies = (currencies) => ({
+  type: ADD_CURRENCIES,
+  currencies,
+});
+
 export function fetchMoedas() {
   return (dispatch) => {
     fetch('https://economia.awesomeapi.com.br/json/all')
@@ -25,4 +31,13 @@ export function fetchMoedas() {
       .then((data) => dispatch(actionCurrencies(data)));
   };
 }
-console.log(fetchMoedas);
+
+export const fetchPegaMoedas = (despesa) => (dispatch) => {
+  fetch('https://economia.awesomeapi.com.br/json/all')
+    .then((response) => response.json())
+    .then((data) => {
+      delete data.USDT;
+      despesa = { ...despesa, exchangeRates: data };
+      dispatch(actionAddCurrencies(despesa));
+    });
+};

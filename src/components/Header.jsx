@@ -7,15 +7,28 @@ import { connect } from 'react-redux';
 class Header extends Component {
   render() {
     const { email, valor } = this.props;
+    let soma = 0;
+    valor.map((v) => {
+      const rates = Object.entries(v.exchangeRates)
+        .find((rate) => rate[0] === v.currency);
+      soma += Number(rates[1].ask) * Number(v.value);
+      return soma;
+    });
+
     return (
       <header>
         <h4 data-testid="email-field">
           Email:
           {email}
         </h4>
-        <h4 data-testid="total-field">
+        <h4>
           Despesa Total:
-          {`R$ ${valor}`}
+          <span
+            data-testid="total-field"
+          >
+            { soma.toFixed(2) }
+
+          </span>
         </h4>
         <h4 data-testid="header-currency-field">BRL</h4>
       </header>
@@ -30,7 +43,7 @@ Header.propTypes = {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  valor: state.wallet.valor,
+  valor: state.wallet.expenses,
 });
 
 export default connect(mapStateToProps)(Header);
