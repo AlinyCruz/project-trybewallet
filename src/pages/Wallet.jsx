@@ -16,5 +16,4 @@ class Wallet extends React.Component {
   }
 }
 
-// export default Wallet;
 export default connect()(Wallet);

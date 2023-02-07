@@ -75,6 +75,7 @@ class Login extends React.Component {
         <button
           disabled={ botaoDesabilitado }
           onClick={ this.proximaPagina }
+          type="button"
         >
           Entrar
 
