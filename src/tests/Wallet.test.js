@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { getAllByRole, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import Wallet from '../pages/Wallet';
@@ -17,12 +17,27 @@ describe('Teste o componente Login', () => {
 
       userEvent.click(inputMethod);
       userEvent.click(inputCurrency);
+      userEvent.click(inputCurrency);
       userEvent.click(inputTag);
       userEvent.click(inputValor);
       userEvent.type(inputValor, '12,50');
       userEvent.click(inputDescription);
       userEvent.type(inputDescription, 'Ferias');
       userEvent.click(botaoAddDespesa);
+
+      waitFor(() => {
+        const ferias = screen.getByText('Ferias');
+        expect(ferias).toBeInTheDocument();
+        const botao = getAllByRole('button');
+        expect(botao).toHaveLength(3);
+        const remover = screen.getByText('Excluir');
+        userEvent.click(remover);
+        waitFor(() => {
+          expect(ferias).not.toBeInTheDocument();
+          const teste = screen.getByText('Valor convertido');
+          expect(teste).toBeInTheDocument();
+        });
+      });
 
       // const valor = screen.getByText('Despesa Total:');
       // expect(valor).toBeInTheDocument();
