@@ -1,11 +1,11 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderWithRouterAndRedux } from './renderWith';
-import App from '../../App';
+import { renderWithRouterAndRedux } from './helpers/renderWith';
+import App from '../App';
 
 describe('Teste o componente Login', () => {
-  it('Teste se na aplicação contém um input para email, senha e botao', () => {
+  it('Testa se na aplicação contém um input para email, senha e botao', () => {
     const { history } = renderWithRouterAndRedux(<App />);
     const inputEmail = screen.getByTestId('email-input');
     const inputSenha = screen.getByTestId('password-input');
